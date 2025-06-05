@@ -10,8 +10,12 @@ import java.util.Set;
 public class KatroStateCipher {
 
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    
     private static final int BOARD_HEIGHT = 4;
     private static final int BOARD_WIDTH = 4;
+    private static final int MAX_POWER = 5;
+    private static final int MAX_COEFF = 16;
+    
     private static final Random RANDOM = new Random();
 
     private static Map<Character, Set<int[]>> charEncodersMap;
@@ -19,8 +23,8 @@ public class KatroStateCipher {
     static {
         charEncodersMap = new HashMap<>();
 
-        for (int power = 0; power <= 5; power++) {
-            for (int coeff = 0; coeff <= 16; coeff++) {
+        for (int power = 0; power <= MAX_POWER; power++) {
+            for (int coeff = 0; coeff <= MAX_COEFF; coeff++) {
                 int charIndex = calcIndex(power, coeff);
 
                 if (charIndex >= 0 && charIndex < ALPHABET.length()) {
